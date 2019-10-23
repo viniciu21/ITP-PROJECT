@@ -1,3 +1,5 @@
+#ifndef IMAGEPROCESSORS_H
+#define IMAGEPROCESSORS_H
 #include <stdio.h>
 typedef struct {
     unsigned char r;
@@ -9,3 +11,4 @@ typedef struct{
     int col;
     Pixel **img;
 }Image;
+#endif
