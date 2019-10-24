@@ -12,7 +12,8 @@ typedef struct {
 typedef struct{
     int line;
     int col;
-    Bool state;
+    Bool status;
     Pixel **img;
 }Image;
+void limpar(Image *img, int r, int g, int b);
 #endif

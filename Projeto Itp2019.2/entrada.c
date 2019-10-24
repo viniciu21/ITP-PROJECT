@@ -17,3 +17,6 @@ void  startimage(Image *img){
     }
     
 }
+Bool escolherfuncao(char nomedafuncao, FILE fp){
+    return true;
+}

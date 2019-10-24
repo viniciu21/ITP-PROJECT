@@ -3,4 +3,5 @@
 #include <stdio.h>
 #include "imageprocessors.h"
 void startimage(Image *img); 
+Bool escolherfuncao(char nomedafuncao, FILE *fp);
 #endif 

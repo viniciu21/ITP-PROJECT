@@ -1,2 +1,4 @@
-300 400
-fill
+image 300 400
+clear 255 0 0
+save 
+
