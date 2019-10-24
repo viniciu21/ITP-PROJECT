@@ -1,4 +1,4 @@
-image 300 400
+image 300 400 
 clear 255 0 0
 save 
 

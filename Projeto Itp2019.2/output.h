@@ -3,5 +3,5 @@
 #include <stdio.h>
 #include "imageprocessors.h"
 
-void save(FILE *file,Image img);
+void save(FILE *file,Image img);//Save .ppm
 #endif

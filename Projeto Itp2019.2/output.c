@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "imageprocessors.h" 
-void save(FILE *fp, Image img){
+void save(FILE *fp, Image img){//Salva a imagem dentro do .ppm
     int l, c;
     fp = fopen("file.ppm", "w");
     if(fp == NULL){

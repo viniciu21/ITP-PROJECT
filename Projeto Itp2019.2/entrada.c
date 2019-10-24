@@ -4,7 +4,7 @@
 #include <string.h>
 
 
-void  startimage(Image *img){
+void  startimage(Image *img){ //Faz a alocação dinamica da imagem que será salva .ppm
     int l,c;
     img->img = malloc(img->line * sizeof(Image*));
     for(l = 0; l < img->line; l++){
@@ -17,6 +17,6 @@ void  startimage(Image *img){
     }
     
 }
-Bool escolherfuncao(char nomedafuncao, FILE fp){
+Bool escolherfuncao(char nomedafuncao, FILE fp){//Metodo possivelmente mais eficiente do que o main.c
     return true;
 }

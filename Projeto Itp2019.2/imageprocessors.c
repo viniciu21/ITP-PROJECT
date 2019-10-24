@@ -2,7 +2,7 @@
 #include "imageprocessors.h"
 #include <stdlib.h>
 
-void limpar(Image *img, int r, int g, int b){
+void limpar(Image *img, int r, int g, int b){//Limpa a imagem e bota uma cor especifica
     int l,c; 
     for(l = 0; l < img->line; l++){
         for(c = 0; c < img->col; c++){
