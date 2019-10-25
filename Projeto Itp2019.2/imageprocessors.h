@@ -12,7 +12,6 @@ typedef struct {//Pixel, contem valores de RGB (Red, Blue, Green)
 typedef struct{//Image, contem linhas e colunas, boleano possivelmente servira para o comando FIll
     int line;
     int col;
-    Bool status;
     Pixel **img;
 }Image;
 void limpar(Image *img, int r, int g, int b);//Função para "limpar" a imagem
