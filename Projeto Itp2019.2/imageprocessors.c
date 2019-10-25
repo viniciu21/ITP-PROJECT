@@ -13,8 +13,7 @@ void limpar(Image *img, int r, int g, int b){//Limpa a imagem e bota uma cor esp
     }
 }
 void line(Image *img, int x0, int y0,int xf,int yf){
-    int angulo = (yf - y0)/(xf - x0);
-
+    float angulo = (yf - y0)/(xf - x0);
 }
 Image fill(Image *img, int r,int g, int b){
     if (r == 0 && g == 0 && b == 0){      

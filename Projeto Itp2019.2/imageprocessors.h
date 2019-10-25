@@ -8,6 +8,7 @@ typedef struct {//Pixel, contem valores de RGB (Red, Blue, Green)
     unsigned char r;
     unsigned char g;
     unsigned char b;
+    Bool state;
 }Pixel;
 typedef struct{//Image, contem linhas e colunas, boleano possivelmente servira para o comando FIll
     int line;

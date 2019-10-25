@@ -18,4 +18,5 @@ void save(FILE *fp, Image img){//Salva a imagem dentro do .ppm
         }
     }
     fclose(fp);
+    free(img.img);
 }
