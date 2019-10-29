@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "imageprocessors.h" 
+#include <stdlib.h>
 void save(FILE *fp, Image img){//Salva a imagem dentro do .ppm
     int l, c;
     fp = fopen("file.ppm", "w");
@@ -18,4 +19,5 @@ void save(FILE *fp, Image img){//Salva a imagem dentro do .ppm
         }
     }
     fclose(fp);
+    free(img.img);
 }
