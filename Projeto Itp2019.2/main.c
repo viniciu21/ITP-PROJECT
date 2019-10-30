@@ -33,8 +33,10 @@ void main(){
             }
             if(strcmp(nome,"line") == 0){
                 fscanf(entrada,"%i %i %i %i", &x0,&y0,&xf,&yf);
-                line(&img, x0, y0, xf, yf, r, g, b);
-
+                line(&img, x0, y0, xf, yf, r, g, b);            
+            }
+            if(strcmp(nome,"polygon")== 0){
+                polygono(&img,r,g,b,entrada);
             }
             
         }

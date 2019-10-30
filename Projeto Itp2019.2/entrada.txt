@@ -1,4 +1,2 @@
-image 600 600 
-line 0 0 100 100
-save 
+polygon 3 0 400 300 200 500 0
 

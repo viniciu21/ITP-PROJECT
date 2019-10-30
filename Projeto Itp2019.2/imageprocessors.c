@@ -13,44 +13,55 @@ void limpar(Image *img, int r, int g, int b){//Limpa a imagem e bota uma cor esp
     }
 }
 void line(Image *img, int x0, int y0,int xf,int yf,int r,int g,int b){
-    int dx,dy,sx,sy,erro,e2;
-    dx =  abs(xf - x0);
-    dy =  abs(yf - x0);
+    int deltax,deltay,quadrantex,quadrantey,erro,erro2;
+    deltax =  abs(xf - x0);
+    deltay =  abs(yf - x0);
     if(x0 < xf){
-        sx = 1;
+        quadrantex = 1;
     }
     else{
-        sx = -1;
+        quadrantex = -1;
     }
     if(y0 < yf){
-        sy = 1;
+        quadrantey = 1;
     }
     else{
-        sy = -1;
+        quadrantey = -1;
     }
-    if(dx > dy){
-        erro = dx/2;
+    if(quadrantex > quadrantey){
+        erro = quadrantex/2;
     }
     else{
-        erro = -dy/2;
+        erro = -quadrantey/2;
     }
-    while (x0 != xf || y0 != yf){
+    while (x0 != xf && y0 != yf){
         img->img[x0][y0].r = r ;
         img->img[x0][y0].g = g ;
         img->img[x0][y0].b = b ;
         
-        e2 = erro;
-        if(e2 > -dx){
-            erro -= dy;
-            x0 += sx;
+        erro2 = erro;
+        if(erro2 > -deltax){
+            erro -= deltay;
+            x0 += quadrantex;
         }
-        if(e2 < dy){
-            erro += dx;
-            y0 += sy;  
+        if(erro2 < deltay){
+            erro += deltax;
+            y0 += deltay;  
         }
     }
 }
-Image fill(Image *img, int r,int g, int b){
+void fill(Image *img, int r,int g, int b){
     if (r == 0 && g == 0 && b == 0){      
+    }
+}
+void polygono(Image *img, int r, int g, int b,FILE *entrada){
+    int pontos,j,i;
+    fscanf(entrada, "%i", &pontos);
+    Ponto arpo[pontos];
+    for (i = 0; i < pontos; i++){
+        fscanf(entrada, "%i %i", &arpo[i].x0, &arpo[i].y0);
+    }
+    for(j = 0; j < pontos; j++){    
+        return;
     }
 }
