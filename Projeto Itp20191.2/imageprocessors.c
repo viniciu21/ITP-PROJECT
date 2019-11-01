@@ -28,14 +28,14 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){
     }
     int erro1, erro2;
     if(deltax > deltay){
-        erro1 = deltax/2;
+        erro1 = deltax/2.0;
     }
     else{
-        erro1 = -deltay/2;
+        erro1 = -deltay/2.0;
     }
     while(1){
         img->img[x0][y0] = cor;
-        if(x0 == xf || y0 == yf){ 
+        if(x0 == xf && y0 == yf){ 
             break;
         }
         erro2 = erro1;
@@ -45,7 +45,7 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){
         }
         if (erro2 < deltay){
             erro1 += deltax; 
-            y0 += sy; 
+           y0 += sy; 
         }
     }
 }
