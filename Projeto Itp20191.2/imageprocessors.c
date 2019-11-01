@@ -44,9 +44,7 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){
     }
 }
  
-void fill(Image *img, int r,int g, int b){
-    if (r == 0 && g == 0 && b == 0){      
-    }
+void fill(Image *img,Pixel cor){
 }
 void polygono(Image *img, Pixel cor,FILE *entrada){
     int pontos,j,i,primeirox,primeiroy;
