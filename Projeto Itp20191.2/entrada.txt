@@ -1,0 +1,7 @@
+image 500 500
+color 204 100 100
+clear 204 100 100
+color 0 0 0
+polygon 3 450 300 350 150 140 0 
+save  
+
