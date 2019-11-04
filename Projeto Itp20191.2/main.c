@@ -39,6 +39,10 @@ void main(){
             if(strcmp(nome,"color")== 0){
                 color(&cor,entrada);
             }
+            if(strcmp(nome,"fill")== 0){
+                fscanf(entrada,"%i %i",&x0,&y0);
+                fill(&img,x0,y0,cor);
+            }
             
         }
     }   

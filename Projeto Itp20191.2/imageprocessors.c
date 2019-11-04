@@ -50,7 +50,18 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){
     }
 }
  
-void fill(Image *img,Pixel cor){
+void fill(Image *img,int x0,int y0,Pixel cor){
+    if(img->col < y0 || img->line < x0 ||  img->img[x0][y0].state == 1){
+        return;
+    }
+    img->img[x0][y0] = cor;
+    img->img[x0][y0].state = 1;
+    fill(img,x0 + 1, y0,cor);
+    fill(img,x0 - 1, y0,cor);
+    fill(img,x0, y0 + 1,cor);
+    fill(img,x0, y0 - 1,cor);
+    fill(img,x0 + 1, y0 + 1,cor);
+    fill(img,x0 - 1, y0 - 1,cor);    
 }
 void polygono(Image *img, Pixel cor,FILE *entrada){
     int pontos,j,i,primeirox,primeiroy;
@@ -59,8 +70,8 @@ void polygono(Image *img, Pixel cor,FILE *entrada){
     for (i = 0; i < pontos; i++){
         fscanf(entrada, "%i %i", &arpo[i].x0, &arpo[i].y0);
         printf("%i %i %i \n", arpo[i].x0,arpo[i].y0,i);
-        
     }
+        
     primeirox = arpo[0].x0;
     primeiroy = arpo[0].y0;
     printf("%i %i %i %i \n",arpo[0].x0,arpo[0].y0,primeirox,primeiroy);

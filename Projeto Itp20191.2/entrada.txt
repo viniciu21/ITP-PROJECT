@@ -1,7 +1,9 @@
-image 500 500
+image 900 900
 color 204 100 100
 clear 204 100 100
 color 0 0 0
-line 100 100 100 200 
+polygon 3 200 100 200 300 500 100
+color 255 255 255
+fill 150 250
 save  
 
