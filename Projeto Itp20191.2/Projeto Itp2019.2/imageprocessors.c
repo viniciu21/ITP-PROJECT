@@ -30,7 +30,7 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){//aqui falta troca
     while(1){
         img->img[x0][y0] = cor;
         img->img[x0][y0].state = 1;
-        if(x0 == xf || y0 == yf){ 
+        if(x0 == xf && y0 == yf){ 
             break;
         }
         erro2 = erro1;
