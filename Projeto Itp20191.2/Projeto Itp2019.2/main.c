@@ -5,7 +5,7 @@
 #include <string.h>
 
 void main(){
-    int i,x0,y0,xf,yf;//Variaveis utilizadas para os argumentos das funções 
+    int i,x0,y0,xf,yf,centrox,centroy,raio;//Variaveis utilizadas para os argumentos das funções 
     Pixel cor;
     Image img;//Nossa imagem
     char nome[50];//Bariavel para o .txt
@@ -42,6 +42,10 @@ void main(){
             if(strcmp(nome,"fill")== 0){
                 fscanf(entrada,"%i %i",&x0,&y0);
                 fill(&img,x0,y0,cor);
+            }
+            if(strcmp(nome, "circle")== 0){
+                fscanf(entrada,"%i %i %i", &centrox,&centroy,&raio);
+                circulo(&img,cor,centrox,centroy,raio);
             }
             
         }

@@ -72,3 +72,50 @@ void polygono(Image *img, Pixel cor,FILE *entrada){
     }
     line(img,arpo[j].x0,arpo[j].y0,primeirox,primeiroy,cor);
 }
+void circulo(Image *img, Pixel cor, int centrox, int centroy, int raio){
+    int x = 0;
+    int y = raio; 
+    int d = 3 - 2 * raio;
+    img->img[centrox+x][centroy+y] = cor;
+    img->img[centrox+x][centroy+y].state = 1;
+    img->img[centrox-x][centroy+y] = cor;
+    img->img[centrox-x][centroy+y].state = 1;
+    img->img[centrox+x][centroy-y] = cor;
+    img->img[centrox+x][centroy-y].state = 1;
+    img->img[centrox-x][centroy-y] = cor;
+    img->img[centrox-x][centroy-y].state = 1;
+    img->img[centrox+y][centroy+x] = cor;
+    img->img[centrox+y][centroy+x].state = 1;
+    img->img[centrox-y][centroy+x] = cor;
+    img->img[centrox-y][centroy+x].state = 1;
+    img->img[centrox+y][centroy-x] = cor;
+    img->img[centrox+y][centroy-x].state = 1; 
+    img->img[centrox-y][centroy-x] = cor;
+    img->img[centrox-y][centroy-x].state = 1;
+    while (y >= x){
+        x++; 
+        if (d > 0){ 
+            y--;  
+            d = d + 4 * (x - y) + 10; 
+        } 
+        else{
+            d = d + 4 * x + 6;
+        }
+        img->img[centrox+x][centroy+y] = cor;
+        img->img[centrox+x][centroy+y].state = 1;
+        img->img[centrox-x][centroy+y] = cor;
+        img->img[centrox-x][centroy+y].state = 1;
+        img->img[centrox+x][centroy-y] = cor;
+        img->img[centrox+x][centroy-y].state = 1;
+        img->img[centrox-x][centroy-y] = cor;
+        img->img[centrox-x][centroy-y].state = 1;
+        img->img[centrox+y][centroy+x] = cor;
+        img->img[centrox+y][centroy+x].state = 1;
+        img->img[centrox-y][centroy+x] = cor;
+        img->img[centrox-y][centroy+x].state = 1;
+        img->img[centrox+y][centroy-x] = cor;
+        img->img[centrox+y][centroy-x].state = 1; 
+        img->img[centrox-y][centroy-x] = cor;
+        img->img[centrox-y][centroy-x].state = 1;
+    }
+}
