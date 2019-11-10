@@ -18,7 +18,7 @@ void main(){
     else{
         while ((fscanf(entrada,"%s", nome) != EOF)){//Lerá todos os nomes das funções do .txt
             if(strcmp(nome,"image") == 0){//Espeficamente para a função startimage
-                fscanf(entrada,"%i %i", &img.col, &img.line);
+                fscanf(entrada,"%i %i", &img.line, &img.col);
                 startimage(&img);
             }
             if(strcmp(nome,"save") == 0){//Função save, que interromperá o while
