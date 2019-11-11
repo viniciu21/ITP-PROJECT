@@ -9,11 +9,11 @@ void save(FILE *fp, Image img){//Salva a imagem dentro do .ppm
     }
     else{
         fprintf(fp,"P3 \n");
-        fprintf(fp,"%i %i\n", img.line,img.col);
+        fprintf(fp,"%i %i\n", img.col,img.line);
         fprintf(fp,"255 \n");
         for(l = 0; l < img.line; l++){
             for(c = 0; c < img.col; c++){
-                fprintf(fp,"%u %u %u \t", img.img[l][c].r,img.img[l][c].g,img.img[l][c].b);
+                fprintf(fp,"%hhu %hhu %hhu \t", img.img[l][c].r,img.img[l][c].g,img.img[l][c].b);
             }
             fprintf(fp,"\n");
         }

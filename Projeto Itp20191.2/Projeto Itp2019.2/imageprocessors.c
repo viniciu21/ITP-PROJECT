@@ -43,17 +43,18 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){//aqui falta troca
             y0 += sy; 
         }
     }
-}
- 
+}    
 void fill(Image *img,int x0,int y0,Pixel cor){
-    if(img->line-1 < y0 || img->col-1 < x0 || x0 < 0 || y0 < 0 ||img->img[x0][y0].state == 1){
+    if(img->line-1 < x0 || img->col < y0 || x0 < 0 || y0 < 0 || img->img[x0][y0].state == 1){
         return;
     }
+    printf("teste \n");
+    printf("(%i,%i)", y0, x0);
     img->img[x0][y0].r = cor.r;
     img->img[x0][y0].g = cor.g;
     img->img[x0][y0].b = cor.b;
     img->img[x0][y0].state = 1;
-    fill(img,x0 + 1, y0,cor);
+    fill(img,x0 + 1, y0,cor);    
     fill(img,x0 - 1, y0,cor);
     fill(img,x0, y0 + 1,cor);
     fill(img,x0, y0 - 1,cor);  

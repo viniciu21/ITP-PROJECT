@@ -9,6 +9,7 @@ void main(){
     Pixel cor;
     Image img;//Nossa imagem
     char nome[50];//Bariavel para o .txt
+    char arquivo[50];
     FILE *fp;//.ppm
     FILE *entrada;//.txt
     entrada = fopen("entrada.txt","r");//Abre em função de leitura
@@ -18,10 +19,11 @@ void main(){
     else{
         while ((fscanf(entrada,"%s", nome) != EOF)){//Lerá todos os nomes das funções do .txt
             if(strcmp(nome,"image") == 0){//Espeficamente para a função startimage
-                fscanf(entrada,"%i %i", &img.line, &img.col);
+                fscanf(entrada,"%i %i", &img.col, &img.line);
                 startimage(&img);
             }
             if(strcmp(nome,"save") == 0){//Função save, que interromperá o while
+                fscanf(entrada,"%s", arquivo);
                 save(fp,img);
                 break;
             }
@@ -31,7 +33,7 @@ void main(){
             }
             if(strcmp(nome,"line") == 0){
                 fscanf(entrada,"%i %i %i %i", &x0,&y0,&xf,&yf);
-                line(&img, x0, y0, xf, yf, cor);            
+                line(&img, y0, x0, yf, xf, cor);            
             }
             if(strcmp(nome,"polygon")== 0){
                 polygono(&img,cor,entrada);
@@ -44,10 +46,9 @@ void main(){
                 fill(&img,x0,y0,cor);
             }
             if(strcmp(nome, "circle")== 0){
-                fscanf(entrada,"%i %i %i", &centrox,&centroy,&raio);
+                fscanf(entrada,"%i %i %i", &centroy,&centrox,&raio);
                 circulo(&img,cor,centrox,centroy,raio);
             }
-            
         }
     }   
     fclose(entrada);//Fecha a leitura
