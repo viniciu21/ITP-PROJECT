@@ -3,6 +3,7 @@
 #include "imageprocessors.h"
 #include "entrada.h"
 #include <string.h>
+#include <stdlib.h>
 
 void main(){
     int i,x0,y0,xf,yf,centrox,centroy,raio;//Variaveis utilizadas para os argumentos das funções 
@@ -32,8 +33,8 @@ void main(){
                 limpar(&img,cor);
             }
             if(strcmp(nome,"line") == 0){
-                fscanf(entrada,"%i %i %i %i", &x0,&y0,&xf,&yf);
-                line(&img, y0, x0, yf, xf, cor);            
+                fscanf(entrada,"%i %i %i %i", &y0,&x0,&yf,&xf);
+                line(&img, x0, y0, xf, yf, cor);            
             }
             if(strcmp(nome,"polygon")== 0){
                 polygono(&img,cor,entrada);
@@ -42,7 +43,7 @@ void main(){
                 fscanf(entrada,"%hhu %hhu %hhu", &cor.r,&cor.g,&cor.b);
             }
             if(strcmp(nome,"fill")== 0){
-                fscanf(entrada,"%i %i",&x0,&y0);
+                fscanf(entrada,"%i %i",&y0,&x0);
                 fill(&img,x0,y0,cor);
             }
             if(strcmp(nome, "circle")== 0){
@@ -50,6 +51,7 @@ void main(){
                 circulo(&img,cor,centrox,centroy,raio);
             }
         }
-    }   
+    }  
     fclose(entrada);//Fecha a leitura
+    system("xdg-open file.ppm");
 }

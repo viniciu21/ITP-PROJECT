@@ -1,6 +1,17 @@
-image 500 500 
-clear 255 255 255
-color 0 0 0 
-circle 250 250 200  
-fill 0 0 
-save 
+image 800 500
+line 10 10 790 10 
+line 790 10 790 490
+line 790 490 10 490 
+line 10 490 10 10 
+circle 400 250 180 
+polygon 4 9 250 399 9 790 249 400 489
+color 35 142 35 
+fill 11 11
+fill 500 11 
+fill 11 300  
+fill 700 400
+color 255 255 0 
+fill 400 11 
+color 0 0 255
+fill 400 250 
+save

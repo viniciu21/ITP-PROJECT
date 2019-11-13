@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "imageprocessors.h"
 #include <stdlib.h>
+#include "entrada.h"
 
 void limpar(Image *img, Pixel cor){//Limpa a imagem e bota uma cor especifica
     int l,c; 
@@ -11,6 +12,20 @@ void limpar(Image *img, Pixel cor){//Limpa a imagem e bota uma cor especifica
     }
 }
 void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){//aqui falta trocar o state
+    if(yf > img->col || xf > img->line){
+        if(yf > img->col){
+            printf("me de um x menor \n");
+        }
+        if(xf > img->line){
+            printf("me de um y menor \n");
+        }
+        printf("teste");
+        cor.r = 255;
+        cor.g = 255;
+        cor.b = 255; 
+        limpar(img,cor);
+        return;
+    }
     int deltax = abs(x0-xf);
     int sx,sy;
     if(x0<xf){
@@ -48,8 +63,6 @@ void fill(Image *img,int x0,int y0,Pixel cor){
     if(img->line-1 < x0 || img->col < y0 || x0 < 0 || y0 < 0 || img->img[x0][y0].state == 1){
         return;
     }
-    printf("teste \n");
-    printf("(%i,%i)", y0, x0);
     img->img[x0][y0].r = cor.r;
     img->img[x0][y0].g = cor.g;
     img->img[x0][y0].b = cor.b;
@@ -69,9 +82,9 @@ void polygono(Image *img, Pixel cor,FILE *entrada){
     primeirox = arpo[0].x0;
     primeiroy = arpo[0].y0;
     for(j = 0; j < pontos -1 ; j++){    
-        line(img,arpo[j].x0,arpo[j].y0,arpo[j+1].x0,arpo[j+1].y0,cor);
+        line(img,arpo[j].y0,arpo[j].x0,arpo[j+1].y0,arpo[j+1].x0,cor);
     }
-    line(img,arpo[j].x0,arpo[j].y0,primeirox,primeiroy,cor);
+    line(img,arpo[j].y0,arpo[j].x0,primeiroy,primeirox,cor);
 }
 void circulo(Image *img, Pixel cor, int centrox, int centroy, int raio){
     int x = 0;
