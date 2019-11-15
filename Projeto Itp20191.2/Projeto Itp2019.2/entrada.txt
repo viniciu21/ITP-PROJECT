@@ -13,5 +13,6 @@ fill 700 400
 color 255 255 0 
 fill 400 11 
 color 0 0 255
-fill 400 250 
-save
+fill 400 250
+negative
+save 

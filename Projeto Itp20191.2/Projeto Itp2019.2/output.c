@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include "imageprocessors.h" 
 #include <stdlib.h>
-void save(FILE *fp, Image img){//Salva a imagem dentro do .ppm
+void save(FILE *fp, Image img, FILE *entrada){//Salva a imagem dentro do .ppm
+    char arquivo[40];
     int l, c;
-    fp = fopen("file.ppm", "w");
+    fscanf(entrada,"%s", arquivo);
+    fp = fopen("file.ppm", "wb");
     if(fp == NULL){
         printf("erro de sintaxe \n");
     }

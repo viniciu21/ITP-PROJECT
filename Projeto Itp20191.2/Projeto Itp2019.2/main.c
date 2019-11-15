@@ -4,6 +4,7 @@
 #include "entrada.h"
 #include <string.h>
 #include <stdlib.h>
+#include "filtros.h"
 
 void main(){
     int i,x0,y0,xf,yf,centrox,centroy,raio;//Variaveis utilizadas para os argumentos das funções 
@@ -25,7 +26,7 @@ void main(){
             }
             if(strcmp(nome,"save") == 0){//Função save, que interromperá o while
                 fscanf(entrada,"%s", arquivo);
-                save(fp,img);
+                save(fp,img,entrada);
                 break;
             }
             if(strcmp(nome,"clear") == 0){//Função clear
@@ -49,6 +50,15 @@ void main(){
             if(strcmp(nome, "circle")== 0){
                 fscanf(entrada,"%i %i %i", &centroy,&centrox,&raio);
                 circulo(&img,cor,centrox,centroy,raio);
+            }
+            if(strcmp(nome, "filtrocinza")== 0){
+                filtrocinza(&img);
+            }
+            if(strcmp(nome, "threshold")== 0){
+                filtrothreshold(&img);
+            }
+            if(strcmp(nome, "negative")== 0){
+                filtronegativo(&img);
             }
         }
     }  
