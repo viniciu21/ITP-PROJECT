@@ -6,4 +6,6 @@
 void filtrocinza(Image *img);
 void filtrothreshold(Image *img);
 void filtronegativo(Image *img);
+void borrar(Image *img);
+void aumentarborrado(Image *img, int n);
 #endif

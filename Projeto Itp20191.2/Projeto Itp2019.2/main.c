@@ -7,7 +7,7 @@
 #include "filtros.h"
 
 void main(){
-    int i,x0,y0,xf,yf,centrox,centroy,raio;//Variaveis utilizadas para os argumentos das funções 
+    int i,x0,y0,xf,yf,centrox,centroy,raio,n;//Variaveis utilizadas para os argumentos das funções 
     Pixel cor;
     Image img;//Nossa imagem
     char nome[50];//Bariavel para o .txt
@@ -59,6 +59,13 @@ void main(){
             }
             if(strcmp(nome, "negative")== 0){
                 filtronegativo(&img);
+            }
+            if(strcmp(nome, "borrar")== 0){
+                borrar(&img);
+            }
+            if(strcmp(nome, "aumentarborrado")== 0){
+                fscanf(entrada,"%i",&n);
+                aumentarborrado(&img, n);
             }
         }
     }  

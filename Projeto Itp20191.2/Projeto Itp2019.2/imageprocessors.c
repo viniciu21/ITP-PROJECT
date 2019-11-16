@@ -41,7 +41,14 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){//aqui falta troca
     else{
         sy = -1;
     }
-    int erro1 = (deltax>deltay ? deltax : -deltay)/2, erro2;
+    int erro1; //(deltax>deltay ? deltax : -deltay)/2, erro2;
+    if(deltax > deltay){
+        erro1 = deltax/2;
+    }
+    else{
+        erro1 = -deltay/2;
+    }
+    int erro2;
     while(1){
         img->img[x0][y0] = cor;
         img->img[x0][y0].state = 1;
@@ -106,7 +113,7 @@ void circulo(Image *img, Pixel cor, int centrox, int centroy, int raio){
     img->img[centrox+y][centroy-x].state = 1; 
     img->img[centrox-y][centroy-x] = cor;
     img->img[centrox-y][centroy-x].state = 1;
-    while (y >= x){
+    while (y > x){
         x++; 
         if (d > 0){ 
             y--;  
