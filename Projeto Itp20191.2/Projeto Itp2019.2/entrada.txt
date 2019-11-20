@@ -1,9 +1,4 @@
 image 150 80
-clear 100 150 50
-color 0 0 0 
-line 0 0 149 79
-color 255 255 255
-polygon 4  0 0  0 79  149 79  149 0
-color 50 150 250
-fill 10 10
+line 10 10 0 10 
+circle 75 40 100 
 save ab.ppm

@@ -2,7 +2,7 @@
 #define ENTRADA_H
 #include <stdio.h>
 #include "primitivas.h"
-void startimage(Image *img); //Função de inicializar imagem
-Bool escolherfuncao(char nomedafuncao, FILE *fp);//Em processo de criação
+void inicializarimage(Image *img); //Função de inicializar imagem
 void color(Pixel *cor, FILE *entrada);
+void menu();
 #endif 

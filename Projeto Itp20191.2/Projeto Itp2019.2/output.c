@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "primitivas.h" 
 #include <stdlib.h>
-void save(FILE *fp, Image img, char *arquivo){//Salva a imagem dentro do .ppm
+void salvar(FILE *fp, Image img, char *arquivo){//Salva a imagem dentro do .ppm
     int l, c;
     fp = fopen(arquivo, "w");
     if(fp == NULL){

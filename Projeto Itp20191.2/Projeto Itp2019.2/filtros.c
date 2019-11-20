@@ -57,8 +57,6 @@ void borrar(Image *img){
                     vermelho += (img->img[l - 1 + i][c - 1 + j].r) * borrar[i][j]; 
                     verde += (img->img[l - 1 + i][c - 1 + j].g) * borrar[i][j];
                     azul += (img->img[l - 1 + i][c - 1 + j].b) * borrar[i][j];
-                    //printf("red = %i green = %i blue = %i \n", vermelho,verde,azul);
-                    //printf("%i %i %i %i \n",l,c ,i, j);
                 }
             }
             if(vermelho > 255){
@@ -82,7 +80,6 @@ void borrar(Image *img){
             img->img[l][c].r = vermelho;
             img->img[l][c].g = verde;
             img->img[l][c].b = azul;
-            //printf("%i %i \n", l,c);
         }
     }
 }

@@ -23,21 +23,33 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){//aqui falta troca
         return;
     }
     int deltax = abs(x0-xf);
-    int sx,sy;
+    int ocatantex,ocatantey;
     if(x0<xf){
-        sx = 1;
+        ocatantex = 1;
     }
     else{
-        sx = -1;
+        ocatantex = -1;
     }
     int deltay = abs(y0-yf);
     if(y0<yf){
-        sy = 1;
+        ocatantey = 1;
     }
     else{
-        sy = -1;
+        ocatantey = -1;
     }
-    int erro1; //(deltax>deltay ? deltax : -deltay)/2, erro2;
+    if(x0 == xf){
+        ocatantex = 1;
+    }
+    else{
+        ocatantex = -1;
+    }
+    if(y0 == yf){
+        ocatantey = 1;
+    }
+    else{
+        ocatantey = -1; 
+    }
+    int erro1;
     if(deltax > deltay){
         erro1 = deltax/2;
     }
@@ -54,11 +66,11 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){//aqui falta troca
         erro2 = erro1;
         if (erro2 >-deltax){
             erro1 -= deltay; 
-            x0 += sx; 
+            x0 += ocatantex; 
         }
         if (erro2 < deltay){
             erro1 += deltax; 
-            y0 += sy; 
+            y0 += ocatantey; 
         }
     }
 }    
@@ -90,51 +102,59 @@ void polygono(Image *img, Pixel cor,FILE *entrada){
     }
     line(img,arpo[j].y0,arpo[j].x0,primeiroy,primeirox,cor);
 }
-void circulo(Image *img, Pixel cor, int centrox, int centroy, int raio){//
-    int x = 0;
-    int y = raio; 
+void circulo(Image *img, Pixel cor, int centrox, int centroy, int raio){
+    if(centroy + raio > img->col-1){
+        printf("Por favor um raio menor ou um ponto mais longe das bordas");
+        return;
+    }
+    if(centrox + raio > img->line-1){
+        printf("Por favor um raio menor ou um ponto mais longe das bordas");
+        return;
+    }
+    int a = 0;
+    int b = raio; 
     int d = 3 - 2 * raio;
-    img->img[centrox+x][centroy+y] = cor;
-    img->img[centrox+x][centroy+y].state = 1;
-    img->img[centrox-x][centroy+y] = cor;
-    img->img[centrox-x][centroy+y].state = 1;
-    img->img[centrox+x][centroy-y] = cor;
-    img->img[centrox+x][centroy-y].state = 1;
-    img->img[centrox-x][centroy-y] = cor;
-    img->img[centrox-x][centroy-y].state = 1;
-    img->img[centrox+y][centroy+x] = cor;
-    img->img[centrox+y][centroy+x].state = 1;
-    img->img[centrox-y][centroy+x] = cor;
-    img->img[centrox-y][centroy+x].state = 1;
-    img->img[centrox+y][centroy-x] = cor;
-    img->img[centrox+y][centroy-x].state = 1; 
-    img->img[centrox-y][centroy-x] = cor;
-    img->img[centrox-y][centroy-x].state = 1;
-    while (y > x){
-        x++; 
+    img->img[centrox+a][centroy+b] = cor;
+    img->img[centrox+a][centroy+b].state = 1;
+    img->img[centrox-a][centroy+b] = cor;
+    img->img[centrox-a][centroy+b].state = 1;
+    img->img[centrox+a][centroy-b] = cor;
+    img->img[centrox+a][centroy-b].state = 1;
+    img->img[centrox-a][centroy-b] = cor;
+    img->img[centrox-a][centroy-b].state = 1;
+    img->img[centrox+b][centroy+a] = cor;
+    img->img[centrox+b][centroy+a].state = 1;
+    img->img[centrox-b][centroy+a] = cor;
+    img->img[centrox-b][centroy+a].state = 1;
+    img->img[centrox+b][centroy-a] = cor;
+    img->img[centrox+b][centroy-a].state = 1; 
+    img->img[centrox-b][centroy-a] = cor;
+    img->img[centrox-b][centroy-a].state = 1;
+    while (b > a){
+        a++; 
         if (d > 0){ 
-            y--;  
-            d = d + 4 * (x - y) + 10; 
+            b--;  
+            d = d+4*(a-b)+10; 
         } 
         else{
-            d = d + 4 * x + 6;
+            d = d+4*a+6;
         }
-        img->img[centrox+x][centroy+y] = cor;
-        img->img[centrox+x][centroy+y].state = 1;
-        img->img[centrox-x][centroy+y] = cor;
-        img->img[centrox-x][centroy+y].state = 1;
-        img->img[centrox+x][centroy-y] = cor;
-        img->img[centrox+x][centroy-y].state = 1;
-        img->img[centrox-x][centroy-y] = cor;
-        img->img[centrox-x][centroy-y].state = 1;
-        img->img[centrox+y][centroy+x] = cor;
-        img->img[centrox+y][centroy+x].state = 1;
-        img->img[centrox-y][centroy+x] = cor;
-        img->img[centrox-y][centroy+x].state = 1;
-        img->img[centrox+y][centroy-x] = cor;
-        img->img[centrox+y][centroy-x].state = 1; 
-        img->img[centrox-y][centroy-x] = cor;
-        img->img[centrox-y][centroy-x].state = 1;
+        img->img[centrox+a][centroy+b] = cor;
+        img->img[centrox+a][centroy+b].state = 1;
+        img->img[centrox-a][centroy+b] = cor;
+        img->img[centrox-a][centroy+b].state = 1;
+        img->img[centrox+a][centroy-b] = cor;
+        img->img[centrox+a][centroy-b].state = 1;
+        img->img[centrox-a][centroy-b] = cor;
+        img->img[centrox-a][centroy-b].state = 1;
+        img->img[centrox+b][centroy+a] = cor;
+        img->img[centrox+b][centroy+a].state = 1;
+        img->img[centrox-b][centroy+a] = cor;
+        img->img[centrox-b][centroy+a].state = 1;
+        img->img[centrox+b][centroy-a] = cor;
+        img->img[centrox+b][centroy-a].state = 1; 
+        img->img[centrox-b][centroy-a] = cor;
+        img->img[centrox-b][centroy-a].state = 1;
     }
 }
 // void graficocorpo(Image *img, Pixel cor){
