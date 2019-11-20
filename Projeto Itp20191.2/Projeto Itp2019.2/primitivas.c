@@ -40,14 +40,8 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){//aqui falta troca
     if(x0 == xf){
         ocatantex = 1;
     }
-    else{
-        ocatantex = -1;
-    }
     if(y0 == yf){
         ocatantey = 1;
-    }
-    else{
-        ocatantey = -1; 
     }
     int erro1;
     if(deltax > deltay){
