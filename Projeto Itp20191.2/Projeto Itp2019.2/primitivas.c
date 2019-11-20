@@ -103,11 +103,7 @@ void polygono(Image *img, Pixel cor,FILE *entrada){
     line(img,arpo[j].y0,arpo[j].x0,primeiroy,primeirox,cor);
 }
 void circulo(Image *img, Pixel cor, int centrox, int centroy, int raio){
-    if(centroy + raio > img->col-1){
-        printf("Por favor um raio menor ou um ponto mais longe das bordas");
-        return;
-    }
-    if(centrox + raio > img->line-1){
+    if(centroy + raio > img->col-1 || centrox + raio > img->line-1){
         printf("Por favor um raio menor ou um ponto mais longe das bordas");
         return;
     }
