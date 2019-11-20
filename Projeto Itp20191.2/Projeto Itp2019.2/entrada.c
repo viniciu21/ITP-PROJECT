@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "imageprocessors.h"
+#include "primitivas.h"
 #include <stdlib.h>
 #include <string.h>
 

@@ -1,11 +1,9 @@
 #include <stdio.h>
-#include "imageprocessors.h" 
+#include "primitivas.h" 
 #include <stdlib.h>
-void save(FILE *fp, Image img, FILE *entrada){//Salva a imagem dentro do .ppm
-    char arquivo[40];
+void save(FILE *fp, Image img, char *arquivo){//Salva a imagem dentro do .ppm
     int l, c;
-    fscanf(entrada,"%s", arquivo);
-    fp = fopen("file.ppm", "wb");
+    fp = fopen(arquivo, "w");
     if(fp == NULL){
         printf("erro de sintaxe \n");
     }

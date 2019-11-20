@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "imageprocessors.h"
+#include "primitivas.h"
 void filtrocinza(Image *img){
     int l,c; 
     for(l = 0; l < img->col; l++){
@@ -46,9 +46,9 @@ void filtronegativo(Image *img){
 void borrar(Image *img){
     int l,c,i,j;
 
-    float borrar[3][3] ={{0.11111111,0.11111111,0.11111111},
-                        {0.11111111,0.11111111,0.11111111},
-                        {0.11111111,0.11111111,0.11111111}};
+    float borrar[3][3] ={{0.111,0.111,0.111},
+                        {0.111,0.111,0.111},
+                        {0.111,0.111,0.111}};
     for(l = 1; l < img->line -1 ;l++){
         for(c = 1; c < img->col - 1;c++){
             int vermelho = 0, verde = 0, azul = 0;

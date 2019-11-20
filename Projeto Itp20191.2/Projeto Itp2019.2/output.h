@@ -1,7 +1,7 @@
 #ifndef OUTPUT_H
 #define OUTPUT_H
 #include <stdio.h>
-#include "imageprocessors.h"
+#include "primitivas.h"
 
-void save(FILE *fp, Image img, FILE *entrada);//Save .ppm
+void save(FILE *fp, Image img, char *arquivo);//Save .ppm
 #endif

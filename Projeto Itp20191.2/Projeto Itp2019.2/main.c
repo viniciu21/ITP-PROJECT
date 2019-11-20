@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "output.h"
-#include "imageprocessors.h"
+#include "primitivas.h"
 #include "entrada.h"
 #include <string.h>
 #include <stdlib.h>
@@ -14,6 +14,7 @@ void main(){
     char arquivo[50];
     FILE *fp;//.ppm
     FILE *entrada;//.txt
+    strcpy(arquivo, "file.ppm");
     entrada = fopen("entrada.txt","r");//Abre em função de leitura
     if (entrada == NULL){
         printf("Erro na abertura!\n");
@@ -26,7 +27,7 @@ void main(){
             }
             if(strcmp(nome,"save") == 0){//Função save, que interromperá o while
                 fscanf(entrada,"%s", arquivo);
-                save(fp,img,entrada);
+                save(fp,img,arquivo);
                 break;
             }
             if(strcmp(nome,"clear") == 0){//Função clear
@@ -67,8 +68,15 @@ void main(){
                 fscanf(entrada,"%i",&n);
                 aumentarborrado(&img, n);
             }
+            // if(strcmp(nome, "graficocorpo")== 0){
+            //     graficocorpo(&img,cor);
+            // }
         }
     }  
+    //graficopolinomio(&img,cor,1);
     fclose(entrada);//Fecha a leitura
-    system("xdg-open file.ppm");
+    char command[200];
+    strcpy(command, "xdg-open ");
+    strcat(command, arquivo);
+    system(command);
 }
