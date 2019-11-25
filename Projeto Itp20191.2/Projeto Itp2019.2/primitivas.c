@@ -18,6 +18,7 @@ void limpar(Image *img, Pixel cor){//Limpa a imagem e bota uma cor especifica
 /*
 ** A função line recebe um ponto inicial e um final trançando uma linha entre os pontos.
 ** https://www.cs.helsinki.fi/group/goa/mallinnus/lines/bresenh.html
+**
 */
 void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){//aqui falta trocar o state
     if(yf > img->col || xf > img->line){
@@ -51,9 +52,6 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){//aqui falta troca
         ocatantey = 1;
     }
     int erro1;
-    if(deltax == deltay){
-        erro1 = 0;
-    }
     if(deltax > deltay){
         erro1 = deltax/2;
     }
