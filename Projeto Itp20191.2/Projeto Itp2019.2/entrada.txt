@@ -1,4 +1,14 @@
-image 150 150
-graficocorpo
-graficopolinomio
-save ab.ppm
+image 800 500
+polygon 4 10 10 790 10 790 490 10 490
+circle 400 250 180 
+polygon 4 9 250 399 9 790 249 400 489
+color 35 142 35 
+fill 11 11
+fill 500 11 
+fill 11 300  
+fill 700 400
+color 255 255 0 
+fill 400 11 
+color 0 0 255
+fill 400 250
+save bb.ppm
