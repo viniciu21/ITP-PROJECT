@@ -2,6 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include "primitivas.h"
+/*
+** Estã função tranforma a imagem em cinza
+*/
 void filtrocinza(Image *img){
     int l,c; 
     for(l = 0; l < img->col; l++){
@@ -13,6 +16,9 @@ void filtrocinza(Image *img){
         }
     }
 }
+/*
+** Estã função tranforma a imagem que tiver o RGB acima de 125 em preto e o que estiver abaixo em branco
+*/
 void filtrothreshold(Image *img){
     int i,j; 
     filtrocinza(img);
@@ -33,6 +39,9 @@ void filtrothreshold(Image *img){
         }
     }
 }
+/*
+** Estã função tranforma as cores da imagem nas cores inversas 
+*/
 void filtronegativo(Image *img){
     int i,j;
     for(i = 0; i < img->line; i++){
@@ -43,9 +52,13 @@ void filtronegativo(Image *img){
             } 
         }
 }
+/*
+** Estã função tranforma borra a imagem
+** https://stackoverflow.com/questions/42363726/bluring-an-image-in-c-c
+** https://www.geeksforgeeks.org/what-is-image-blurring/
+*/
 void borrar(Image *img){
     int l,c,i,j;
-
     float borrar[3][3] ={{0.111,0.111,0.111},
                         {0.111,0.111,0.111},
                         {0.111,0.111,0.111}};
@@ -54,9 +67,9 @@ void borrar(Image *img){
             int vermelho = 0, verde = 0, azul = 0;
             for(i = 0; i < 3; i++){
                 for(j = 0; j < 3; j++){
-                    vermelho += (img->img[l - 1 + i][c - 1 + j].r) * borrar[i][j]; 
-                    verde += (img->img[l - 1 + i][c - 1 + j].g) * borrar[i][j];
-                    azul += (img->img[l - 1 + i][c - 1 + j].b) * borrar[i][j];
+                    vermelho += (img->img[l-1+i][c-1+j].r)*borrar[i][j]; 
+                    verde += (img->img[l-1+i][c-1+j].g)*borrar[i][j];
+                    azul += (img->img[l-1+i][c-1+j].b)*borrar[i][j];
                 }
             }
             if(vermelho > 255){
@@ -83,6 +96,9 @@ void borrar(Image *img){
         }
     }
 }
+/*
+** Estã função aumenta o borrado da imagem
+*/
 void aumentarborrado(Image *img, int n){
     if(n == 0){
         return;

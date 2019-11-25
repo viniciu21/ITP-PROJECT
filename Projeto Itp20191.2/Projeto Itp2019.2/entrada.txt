@@ -1,4 +1,4 @@
-image 150 80
-line 10 10 0 10 
-line 0 0 149 79 
+image 150 150
+graficocorpo
+graficopolinomio
 save ab.ppm

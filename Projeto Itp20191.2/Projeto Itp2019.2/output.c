@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include "primitivas.h" 
 #include <stdlib.h>
+/*
+** A função salvar recebe a imagem já modificada pelas funções e o nome do arquivo.ppm e monta um arquivo ppm 
+*/
 void salvar(FILE *fp, Image img, char *arquivo){//Salva a imagem dentro do .ppm
     int l, c;
     fp = fopen(arquivo, "w");

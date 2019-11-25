@@ -6,7 +6,9 @@
 #include <stdlib.h>
 #include "filtros.h"
 
-
+/*
+** Estã função cria uma imagem alocando dinamicamente suas linhas e colunas
+*/
 void  inicializarimage(Image *img){ //Faz a alocação dinamica da imagem que será salva .ppm
     int l,c;
     img->img = malloc(img->line * sizeof(Pixel*));
@@ -21,10 +23,16 @@ void  inicializarimage(Image *img){ //Faz a alocação dinamica da imagem que se
     }
     
 }
+/*
+** Estã função muda o RGB atual 
+*/
 void color(Pixel *cor, FILE *entrada){
     fscanf(entrada,"%hhu %hhu %hhu", &cor->r,&cor->b,&cor->b);
     printf("%hhu %hhu %hhu \n",cor->r,cor->g,cor->b);
 }
+/*
+** Estã função lê o arquivo.txt e pega suas funções e distribui para todo os arquivos 
+*/
 void menu(){
     int i,x0,y0,xf,yf,centrox,centroy,raio,n;//Variaveis utilizadas para os argumentos das funções 
     Pixel cor;
@@ -40,16 +48,16 @@ void menu(){
     }
     else{
         while ((fscanf(entrada,"%s", nome) != EOF)){//Lerá todos os nomes das funções do .txt
-            if(strcmp(nome,"image") == 0){//Espeficamente para a função startimage
+            if(strcmp(nome,"image") == 0){
                 fscanf(entrada,"%i %i", &img.col, &img.line);
                 inicializarimage(&img);
             }
-            if(strcmp(nome,"save") == 0){//Função save, que interromperá o while
+            if(strcmp(nome,"save") == 0){
                 fscanf(entrada,"%s", arquivo);
                 salvar(fp,img,arquivo);
                 break;
             }
-            if(strcmp(nome,"clear") == 0){//Função clear
+            if(strcmp(nome,"clear") == 0){
                 fscanf(entrada,"%hhu %hhu %hhu", &cor.r,&cor.g,&cor.b);
                 limpar(&img,cor);
             }

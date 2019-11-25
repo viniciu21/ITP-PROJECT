@@ -1,7 +1,9 @@
 #ifndef PRIMITIVAS_H
 #define PRIMITIVAS_H
 #include <stdio.h>
-
+/*
+** Está biblioteca contém todas os structs e primitivas utilizadas no projeto
+*/
 typedef enum{//Boleano 
     false, true
 } Bool;
@@ -19,7 +21,7 @@ typedef struct{//Image, contem linhas e colunas, boleano possivelmente servira p
     Pixel **img;
 } Image;
 
-typedef struct{
+typedef struct{//Contém as informações de um ponto 
     int x0;
     int y0;
 } Ponto;
@@ -29,6 +31,5 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor);
 void fill(Image *img,int x0,int y0,Pixel cor);
 void polygono(Image *img, Pixel cor,FILE *entrada);
 void circulo(Image *img, Pixel cor, int centrox, int centroy, int raio);
-//void graficocorpo(Image *img, Pixel cor);
-//void graficopolinomio(Image *img, Pixel cor, int grau);
+
 #endif

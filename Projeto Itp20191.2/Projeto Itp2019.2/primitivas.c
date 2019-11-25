@@ -3,15 +3,22 @@
 #include <stdlib.h>
 #include "entrada.h"
 #include <math.h>
-
+/* 
+** A função limpar usa a cor (R,G,B) que o usuario escolher e "limpa" a imagem.
+*/
 void limpar(Image *img, Pixel cor){//Limpa a imagem e bota uma cor especifica
     int l,c; 
     for(l = 0; l < img->line; l++){
         for(c = 0; c < img->col; c++){
-            img->img[l][c] = cor;    
+            img->img[l][c] = cor;
+            img->img[l][c].state = 0;    
         }
     }
 }
+/*
+** A função line recebe um ponto inicial e um final trançando uma linha entre os pontos.
+** https://www.cs.helsinki.fi/group/goa/mallinnus/lines/bresenh.html
+*/
 void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){//aqui falta trocar o state
     if(yf > img->col || xf > img->line){
         if(yf > img->col){
@@ -44,6 +51,9 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){//aqui falta troca
         ocatantey = 1;
     }
     int erro1;
+    if(deltax == deltay){
+        erro1 = 0;
+    }
     if(deltax > deltay){
         erro1 = deltax/2;
     }
@@ -68,6 +78,9 @@ void line(Image *img, int x0, int y0,int xf,int yf,Pixel cor){//aqui falta troca
         }
     }
 }    
+/*
+** A função preencher recebe um ponto(x.y) como parâmetro e preenche com a cor que esta em vigor.
+*/
 void fill(Image *img,int x0,int y0,Pixel cor){
     if(img->line-1 < x0 || img->col-1 < y0 || x0 < 0 || y0 < 0 || img->img[x0][y0].state == 1){
         return;
@@ -82,6 +95,10 @@ void fill(Image *img,int x0,int y0,Pixel cor){
     fill(img,x0, y0 + 1,cor);
     fill(img,x0, y0 - 1,cor);  
 }
+/*
+** A função polygono recebe como parâmetro um número de pontos e em seguida a quantidade de ponto(x,y)
+** de acordo com o número de pontos que foi escrito e o programa conectará os pontos dados com linhas.
+*/
 void polygono(Image *img, Pixel cor,FILE *entrada){
     int pontos,j,i,primeirox,primeiroy;
     fscanf(entrada, "%i", &pontos);
@@ -96,6 +113,11 @@ void polygono(Image *img, Pixel cor,FILE *entrada){
     }
     line(img,arpo[j].y0,arpo[j].x0,primeiroy,primeirox,cor);
 }
+/*
+** A função circulo basicamente desenha um circulo dado um (x,y) que será o centro do circulo e o raio
+** do mesmo.
+** https://www.javatpoint.com/computer-graphics-bresenhams-circle-algorithm
+*/
 void circulo(Image *img, Pixel cor, int centrox, int centroy, int raio){
     if(centroy + raio > img->col-1 || centrox + raio > img->line-1){
         printf("Por favor um raio menor ou um ponto mais longe das bordas");
@@ -147,34 +169,3 @@ void circulo(Image *img, Pixel cor, int centrox, int centroy, int raio){
         img->img[centrox-b][centroy-a].state = 1;
     }
 }
-// void graficocorpo(Image *img, Pixel cor){
-//     line(img,0,img->line/2,img->col-1,img->line/2,cor);
-//     line(img,img->col/2,0,img->col/2,img->line-1,cor);
-// }
-// void graficopolinomio(Image *img, Pixel cor, int grau){
-//     int centrox0 = img->col/2;
-//     int centroy0 = img->line/2;
-//     Ponto salvo;
-//     int a,b,c,d,x,y;
-//     x = 0;
-//     if(grau == 1){
-//         printf("me diga o a(aquele que multiplica o X) e o d(valor independente)\n");
-//         scanf("%i %i",&a,&d);
-//         y = a*x+d;
-//         salvo.x0 = x;
-//         salvo.y0 = y;
-//         x = 10;
-//         y = a*x+d;
-//         line(img,salvo.y0,salvo.x0,y,x,cor);
-//         line(img,25,25,30,10,cor);
-//         // while(centrox0 != img->col-1){
-//         //     y = a*x+d;
-//         //     salvo.x0 = x;
-//         //     salvo.y0 = y;
-//         //     x++;
-//         //     y = a*x+d;
-//         //     centrox0++;
-//         //     line(img,salvo.y0,salvo.x0,y,x,cor);
-//         // }
-//     }
-// }

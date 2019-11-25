@@ -2,5 +2,9 @@
 #define OUTPUT_H
 #include <stdio.h>
 #include "primitivas.h"
-void salvar(FILE *fp, Image img, char *arquivo);//Save .ppm
+/*
+** Está biblioteca contém a função para salvar o arquivo .ppm
+*/
+void salvar(FILE *fp, Image img, char *arquivo);
+
 #endif
